@@ -223,7 +223,7 @@ try:
 	while True:
 		
 		if GPIO.input(X):
-			volldrehung(full, mo1)
+			volldrehung(full, mo2)
 			ruckdrehung(full, mo2)
 			volldrehung(vrtl, mo2)
 			ruckdrehung(vrtl, mo2)

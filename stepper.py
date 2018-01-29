@@ -124,12 +124,24 @@ def Step7():
     sleep (time)
     GPIO.output(A, False)
 
+def Step7B():
+    GPIO.output(E, True)
+    sleep (time)
+    GPIO.output(E, False)
+
 def Step8():
     GPIO.output(D, True)
     GPIO.output(A, True)
     sleep (time)
     GPIO.output(D, False)
     GPIO.output(A, False)
+
+def Step8B():
+    GPIO.output(H, True)
+    GPIO.output(E, True)
+    sleep (time)
+    GPIO.output(H, False)
+    GPIO.output(E, False)
 
 # Volle Umdrehung
 def sequee1 ():

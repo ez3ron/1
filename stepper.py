@@ -221,24 +221,25 @@ def stop():
 
 try:
 	while True:
-		input_stateA= GPIO.input(X)
-        input_stateB= GPIO.input(Y)
-		if input_stateA == False:
-            print("BUTTON!AA!")
-			volldrehung(full, mo2)
-			ruckdrehung(full, mo2)
-			volldrehung(vrtl, mo2)
-			ruckdrehung(vrtl, mo2)
-			volldrehung(zwtl, mo2)
-		elif input_stateB == False:
-            print("BUTTON!BB!")
-			volldrehung(full, mo1)
-			ruckdrehung(full, mo1)
-			volldrehung(vrtl, mo1)
-			ruckdrehung(vrtl, mo1)
-			volldrehung(zwtl, mo1)
-		else: 
-			print("DRUEKE KNOPF!")
+	input_stateA= GPIO.input(X)
+    input_stateB= GPIO.input(Y)
+	if input_stateA == False:
+        print("BUTTON!AA!")
+		volldrehung(full, mo2)
+		ruckdrehung(full, mo2)
+        volldrehung(vrtl, mo2)
+		ruckdrehung(vrtl, mo2)
+		volldrehung(zwtl, mo2)
+
+	if input_stateB == False:
+        print("BUTTON!BB!")
+		volldrehung(full, mo1)
+		ruckdrehung(full, mo1)
+        volldrehung(vrtl, mo1)
+		ruckdrehung(vrtl, mo1)
+		volldrehung(zwtl, mo1)
+	else:
+		print("DRUEKE KNOPF!")
 
 		sleep(0.1)
 	

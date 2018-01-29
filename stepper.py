@@ -164,18 +164,42 @@ def sequee2 ():
         Step2()
         Step1()
 
-def volldrehung (art):
+def sequee1B ():
+        Step1B()
+        Step2B()
+        Step3B()
+        Step4B()
+        Step5B()
+        Step6B()
+        Step7B()
+        Step8B()
+
+def sequee2B ():
+        Step8B()
+        Step7B()
+        Step6B()
+        Step5B()
+        Step4B()
+        Step3B()
+        Step2B()
+        Step1B()
+	
+def volldrehung (art , motor):
     print("vorwarts!")
     for i in range (art):    
-        sequee1()
-#	if (i % 15) == 0 :  
+       	if  motor = mo1:
+		sequee1()
+    	else:
+		sequee1B()
         print (i)
 
-def ruckdrehung (art):
+def ruckdrehung (art, motor):
     print("ruckwarts!")
     for i in range (art):    
-        sequee2()  
-#	if (i % 15) == 0 :
+	if  motor = mo1:
+		sequee2()
+    	else:
+		sequee2B()
         print (i)
 
 def stop():
@@ -185,12 +209,18 @@ def stop():
 try:
 	while True:
 		
-		if GPIO.input(15):
-			volldrehung(full)
-			ruckdrehung(full)
-			volldrehung(vrtl)
-			ruckdrehung(vrtl)
-			volldrehung(zwtl)
+		if GPIO.input(X):
+			volldrehung(full, mo1)
+			ruckdrehung(full, mo2)
+			volldrehung(vrtl, mo2)
+			ruckdrehung(vrtl, mo2)
+			volldrehung(zwtl, mo2)
+		if GPIO.input(Y):
+			volldrehung(full, mo1)
+			ruckdrehung(full, mo1)
+			volldrehung(vrtl, mo1)
+			ruckdrehung(vrtl, mo1)
+			volldrehung(zwtl, mo1)
 		else: 
 			print("DRUEKE KNOPF!")
 

@@ -21,8 +21,8 @@ G=33
 H=37
 
 
-X=15   # Button
-Y=11
+X=15   # ButtonA
+Y=11   # ButtonB
 time = 0.0009
 
 
@@ -68,7 +68,6 @@ def Step1B():
     GPIO.output(H, True)
     sleep (time)
     GPIO.output(H, False)
-
 
 def Step2():
     GPIO.output(C, True)
@@ -196,10 +195,10 @@ def sequee2B ():
         Step3B()
         Step2B()
         Step1B()
-	
+
 def volldrehung (art , motor):
     print("vorwarts!")
-    for i in range (art):    
+    for i in range (art):
        	if  motor == 'A':
 		sequee1()
     	else:
@@ -208,7 +207,7 @@ def volldrehung (art , motor):
 
 def ruckdrehung (art, motor):
     print("ruckwarts!")
-    for i in range (art):    
+    for i in range (art):
 	if  motor == 'A':
 		sequee2()
     	else:
@@ -221,28 +220,28 @@ def stop():
 
 try:
 	while True:
-	input_stateA= GPIO.input(X)
-    input_stateB= GPIO.input(Y)
-	if input_stateA == False:
-        print("BUTTON!AA!")
-		volldrehung(full, mo2)
-		ruckdrehung(full, mo2)
-        volldrehung(vrtl, mo2)
-		ruckdrehung(vrtl, mo2)
-		volldrehung(zwtl, mo2)
+    	input_stateA= GPIO.input(X)
+        input_stateB= GPIO.input(Y)
+    	if input_stateA == False:
+            print("BUTTON!AA!")
+    		volldrehung(full, mo2)
+    		ruckdrehung(full, mo2)
+            volldrehung(vrtl, mo2)
+    		ruckdrehung(vrtl, mo2)
+    		volldrehung(zwtl, mo2)
 
-	if input_stateB == False:
-        print("BUTTON!BB!")
-		volldrehung(full, mo1)
-		ruckdrehung(full, mo1)
-        volldrehung(vrtl, mo1)
-		ruckdrehung(vrtl, mo1)
-		volldrehung(zwtl, mo1)
-	else:
-		print("DRUEKE KNOPF!")
+    	if input_stateB == False:
+            print("BUTTON!BB!")
+    		volldrehung(full, mo1)
+    		ruckdrehung(full, mo1)
+            volldrehung(vrtl, mo1)
+    		ruckdrehung(vrtl, mo1)
+    		volldrehung(zwtl, mo1)
+    	else:
+    		print("DRUEKE KNOPF!")
 
-		sleep(0.1)
-	
+    		sleep(0.1)
+
 except KeyboardInterrupt:
 	stop()
 

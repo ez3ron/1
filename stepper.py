@@ -33,17 +33,28 @@ zwtl = 32
 
 # Pins aus Ausgange definieren
 GPIO.setup(X, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-
+GPIO.setup(Y, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 GPIO.setup(A,GPIO.OUT)
 GPIO.setup(B,GPIO.OUT)
 GPIO.setup(C,GPIO.OUT)
 GPIO.setup(D,GPIO.OUT)
 
+
+GPIO.setup(E,GPIO.OUT)
+GPIO.setup(F,GPIO.OUT)
+GPIO.setup(G,GPIO.OUT)
+GPIO.setup(H,GPIO.OUT)
+
 GPIO.output(A, False)
 GPIO.output(B, False)
 GPIO.output(C, False)
 GPIO.output(D, False)
+
+GPIO.output(E, False)
+GPIO.output(F, False)
+GPIO.output(G, False)
+GPIO.output(H, False)
 
 # Schritte 1 - 8 festlegen
 def Step1():

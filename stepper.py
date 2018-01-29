@@ -20,18 +20,15 @@ F=31
 G=33
 H=37
 
-
 X=15   # ButtonA
 Y=11   # ButtonB
 time = 0.0009
-
 
 full = 512
 halF = 256
 vrtl = 128
 ahtl = 64
 zwtl = 32
-
 
 # Pins aus Ausgange definieren
 GPIO.setup(X, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
@@ -41,7 +38,6 @@ GPIO.setup(A,GPIO.OUT)
 GPIO.setup(B,GPIO.OUT)
 GPIO.setup(C,GPIO.OUT)
 GPIO.setup(D,GPIO.OUT)
-
 
 GPIO.setup(E,GPIO.OUT)
 GPIO.setup(F,GPIO.OUT)
@@ -220,27 +216,27 @@ def stop():
 
 try:
 	while True:
-            input_stateA= GPIO.input(X)
-            input_stateB= GPIO.input(Y)
-        	if input_stateA == False:
-                print("BUTTON!AA!")
-        		volldrehung(full, mo2)
-        		ruckdrehung(full, mo2)
-                volldrehung(vrtl, mo2)
-        		ruckdrehung(vrtl, mo2)
-        		volldrehung(zwtl, mo2)
+        input_stateA= GPIO.input(X)
+        input_stateB= GPIO.input(Y)
+        if input_stateA == False:
+            print("BUTTON!AA!")
+        	volldrehung(full, mo2)
+    		ruckdrehung(full, mo2)
+            volldrehung(vrtl, mo2)
+    		ruckdrehung(vrtl, mo2)
+    		volldrehung(zwtl, mo2)
 
-        	if input_stateB == False:
-                print("BUTTON!BB!")
-        		volldrehung(full, mo1)
-        		ruckdrehung(full, mo1)
-                volldrehung(vrtl, mo1)
-        		ruckdrehung(vrtl, mo1)
-        		volldrehung(zwtl, mo1)
-        	else:
-        		print("DRUEKE KNOPF!")
-                #bis ernetut eingabe geprüft wird!
-        		sleep(0.1)
+    	if input_stateB == False:
+            print("BUTTON!BB!")
+    		volldrehung(full, mo1)
+    		ruckdrehung(full, mo1)
+            volldrehung(vrtl, mo1)
+    		ruckdrehung(vrtl, mo1)
+    		volldrehung(zwtl, mo1)
+    	else:
+    		print("DRUEKE KNOPF!")
+            #bis ernetut eingabe geprüft wird!
+        	sleep(0.1)
 
 except KeyboardInterrupt:
 	stop()

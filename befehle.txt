@@ -1,3 +1,42 @@
+Git:
+###############################
+add
+commit -m "..."
+mkdir
+touch
+
+
+###############################
+
+
 temperatur auslesen:
 vcgencmd measure_temp
 vcgencmd commands
+
+remove:
+rm -r mydir
+force remove:
+rm -rf mydir
+
+vcgencmd measure_temp
+nano
+dir 
+cd
+rm , rm  /home/pi/Monitor/* .. -r -f
+sudo motion start /stop
+
+sudo nano /etc/motion/motion.conf
+su
+
+passwd pi
+sudo shutdown -h now (sudo halt)
+sudo shutdown -r now  (sudo reboot)
+
+/usr/local/bin/noip2 -C
+
+ps aux | grep
+
+noip2
+
+list all video device:
+for d in /dev/video* ; do echo $d ; v4l2-ctl --device=$d -D --list-formats  ; echo '===============' ; done

@@ -12,6 +12,8 @@ B=16   # in2
 C=18   # in3
 D=22   # in4
 
+mo1 = 'A'
+mo2 = 'B'
 
 E=29
 F=31
@@ -78,61 +80,61 @@ def Step2():
 def Step2B():
     GPIO.output(G, True)
     GPIO.output(H, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(H, False)
     GPIO.output(G, False)
 
 def Step3():
     GPIO.output(C, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(C, False)
 
 def Step3B():
     GPIO.output(G, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(G, False)
 
 def Step4():
     GPIO.output(B, True)
     GPIO.output(C, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(B, False)
     GPIO.output(C, False)
 
 def Step4B():
     GPIO.output(F, True)
     GPIO.output(G, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(F, False)
     GPIO.output(G, False)
 
 def Step5():
     GPIO.output(B, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(B, False)
 
 def Step5B():
     GPIO.output(F, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(F, False)
 
 def Step6():
     GPIO.output(A, True)
     GPIO.output(B, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(A, False)
     GPIO.output(B, False)
 
 def Step6B():
     GPIO.output(E, True)
     GPIO.output(F, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(E, False)
     GPIO.output(F, False)
 
 def Step7():
     GPIO.output(A, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(A, False)
 
 def Step7B():
@@ -143,14 +145,14 @@ def Step7B():
 def Step8():
     GPIO.output(D, True)
     GPIO.output(A, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(D, False)
     GPIO.output(A, False)
 
 def Step8B():
     GPIO.output(H, True)
     GPIO.output(E, True)
-    sleep (time)
+    sleep(time)
     GPIO.output(H, False)
     GPIO.output(E, False)
 
@@ -198,7 +200,7 @@ def sequee2B ():
 def volldrehung (art , motor):
     print("vorwarts!")
     for i in range (art):    
-       	if  motor == mo1:
+       	if  motor == 'A':
 		sequee1()
     	else:
 		sequee1B()
@@ -207,7 +209,7 @@ def volldrehung (art , motor):
 def ruckdrehung (art, motor):
     print("ruckwarts!")
     for i in range (art):    
-	if  motor == mo1:
+	if  motor == 'A':
 		sequee2()
     	else:
 		sequee2B()

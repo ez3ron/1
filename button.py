@@ -26,5 +26,5 @@ try:
         if input_stateB == False:
             print('Button Pressed')
             time.sleep(0.2)
-except: KeyboardInterrupt:
+except KeyboardInterrupt:
     stop()

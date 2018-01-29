@@ -228,7 +228,7 @@ try:
 			volldrehung(vrtl, mo2)
 			ruckdrehung(vrtl, mo2)
 			volldrehung(zwtl, mo2)
-		if GPIO.input(Y):
+		elif GPIO.input(Y):
 			volldrehung(full, mo1)
 			ruckdrehung(full, mo1)
 			volldrehung(vrtl, mo1)

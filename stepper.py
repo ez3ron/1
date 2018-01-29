@@ -225,7 +225,6 @@ try:
             volldrehung(vrtl, mo2)
     		ruckdrehung(vrtl, mo2)
     		volldrehung(zwtl, mo2)
-
     	if input_stateB == False:
             print("BUTTON!BB!")
     		volldrehung(full, mo1)

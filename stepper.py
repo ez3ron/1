@@ -220,8 +220,8 @@ def stop():
 
 try:
 	while True:
-    input_stateA= GPIO.input(X)
-    input_stateB= GPIO.input(Y)
+        input_stateA= GPIO.input(X)
+        input_stateB= GPIO.input(Y)
     	if input_stateA == False:
             print("BUTTON!AA!")
     		volldrehung(full, mo2)
@@ -239,7 +239,7 @@ try:
     		volldrehung(zwtl, mo1)
     	else:
     		print("DRUEKE KNOPF!")
-
+            #bis ernetut eingabe geprüft wird!
     		sleep(0.1)
 
 except KeyboardInterrupt:

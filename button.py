@@ -20,11 +20,11 @@ try:
         input_stateB = GPIO.input(Y)
 
         if input_stateA == False:
-            print('Button Pressed')
+            print('Button Pressed AA')
             time.sleep(0.2)
 
         if input_stateB == False:
-            print('Button Pressed')
+            print('Button Pressed BB')
             time.sleep(0.2)
 except KeyboardInterrupt:
     stop()

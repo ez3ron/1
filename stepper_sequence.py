@@ -1,9 +1,9 @@
-
 from time import sleep
 import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BOARD)
+import button
 
+GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
 # Verwendete Pins am Rapberry Pi
@@ -15,10 +15,10 @@ D=22   # in4
 mo1 = 'A'
 mo2 = 'B'
 
-E=29
-F=31
-G=33
-H=37
+E=29    #in1
+F=31    #in2
+G=33    #in3
+H=37    #in4
 
 X=15   # ButtonA
 Y=11   # ButtonB
@@ -213,32 +213,3 @@ def ruckdrehung (art, motor):
 def stop():
     print("STOP!")
     GPIO.cleanup()
-
-try:
-	while True:
-        input_stateA= GPIO.input(X)
-        input_stateB= GPIO.input(Y)
-        if input_stateA == False:
-            print("BUTTON!AA!")
-        	volldrehung(full, mo2)
-    		ruckdrehung(full, mo2)
-            volldrehung(vrtl, mo2)
-    		ruckdrehung(vrtl, mo2)
-    		volldrehung(zwtl, mo2)
-    	if input_stateB == False:
-            print("BUTTON!BB!")
-    		volldrehung(full, mo1)
-    		ruckdrehung(full, mo1)
-            volldrehung(vrtl, mo1)
-    		ruckdrehung(vrtl, mo1)
-    		volldrehung(zwtl, mo1)
-    	else:
-    		print("DRUEKE KNOPF!")
-            #bis ernetut eingabe geprüft wird!
-        	sleep(0.1)
-
-except KeyboardInterrupt:
-	stop()
-
-finally:
-	stop()

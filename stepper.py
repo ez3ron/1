@@ -220,8 +220,8 @@ def stop():
 
 try:
 	while True:
-    	input_stateA= GPIO.input(X)
-        input_stateB= GPIO.input(Y)
+    input_stateA= GPIO.input(X)
+    input_stateB= GPIO.input(Y)
     	if input_stateA == False:
             print("BUTTON!AA!")
     		volldrehung(full, mo2)

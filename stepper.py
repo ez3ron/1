@@ -187,7 +187,7 @@ def sequee2B ():
 def volldrehung (art , motor):
     print("vorwarts!")
     for i in range (art):    
-       	if  motor = mo1:
+       	if  motor == mo1:
 		sequee1()
     	else:
 		sequee1B()
@@ -196,7 +196,7 @@ def volldrehung (art , motor):
 def ruckdrehung (art, motor):
     print("ruckwarts!")
     for i in range (art):    
-	if  motor = mo1:
+	if  motor == mo1:
 		sequee2()
     	else:
 		sequee2B()

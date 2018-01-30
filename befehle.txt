@@ -6,6 +6,7 @@ mkdir
 touch
 
 
+
 ###############################
 
 
@@ -20,7 +21,7 @@ rm -rf mydir
 
 vcgencmd measure_temp
 nano
-dir 
+dir
 cd
 rm , rm  /home/pi/Monitor/* .. -r -f
 sudo motion start /stop

@@ -1,7 +1,8 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
-import button
+# from button import *
+# knopfsteuerung prototyp 0.1
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
@@ -20,9 +21,12 @@ F=31    #in2
 G=33    #in3
 H=37    #in4
 
-X=15   # ButtonA
-Y=11   # ButtonB
-time = 0.0009
+m1 = [A, B, C, D]
+m2 = [E, F, G, H]
+
+# zeit zwischen sequenzen
+time = 0.0005
+
 
 full = 512
 halF = 256
@@ -55,10 +59,10 @@ GPIO.output(G, False)
 GPIO.output(H, False)
 
 # Schritte 1 - 8 festlegen
-def Step1():
-    GPIO.output(D, True)
+def Step1(m[]):
+    GPIO.output(m[3], True)
     sleep (time)
-    GPIO.output(D, False)
+    GPIO.output(m[3], False)
 
 def Step1B():
     GPIO.output(H, True)
@@ -192,6 +196,8 @@ def sequee2B ():
         Step2B()
         Step1B()
 
+################################################
+# Vor / Rückdreuhung
 def volldrehung (art , motor):
     print("vorwarts!")
     for i in range (art):
@@ -210,6 +216,19 @@ def ruckdrehung (art, motor):
 		sequee2B()
         print (i)
 
+##############################################
+# stop & clear
 def stop():
     print("STOP!")
     GPIO.cleanup()
+
+# Hauptprogramm:
+try:
+    volldrehung(full, m1)
+    ruckdrehung(full, m2)
+    volldrehung(vrtl, m1)
+    ruckdrehung(vrtl, m2)
+except KeyboardInterrupt:
+    stop()
+finally:
+    stop()

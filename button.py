@@ -14,17 +14,18 @@ def stop():
     print("STOP!")
     GPIO.cleanup()
 
-try:
-    while True:
-        input_stateA = GPIO.input(X)
-        input_stateB = GPIO.input(Y)
+def buttons():
+    try:
+        while True:
+            input_stateA = GPIO.input(X)
+            input_stateB = GPIO.input(Y)
 
-        if input_stateA == False:
-            print('Button Pressed AA')
-            time.sleep(0.2)
+            if input_stateA == False:
+                print('Button Pressed AA')
+                time.sleep(0.2)
 
-        if input_stateB == False:
-            print('Button Pressed BB')
-            time.sleep(0.2)
-except KeyboardInterrupt:
-    stop()
+            if input_stateB == False:
+                print('Button Pressed BB')
+                time.sleep(0.2)
+    except KeyboardInterrupt:
+        stop()

@@ -4,6 +4,11 @@ add
 commit -m "..."
 mkdir
 touch
+checkout
+
+#to make a new branch and to switch to it:
+git checkout -b yourNewBranchName
+#(to just switch to a new branch the same but without the -b)
 
 
 ###############################
@@ -20,7 +25,7 @@ rm -rf mydir
 
 vcgencmd measure_temp
 nano
-dir 
+dir
 cd
 rm , rm  /home/pi/Monitor/* .. -r -f
 sudo motion start /stop

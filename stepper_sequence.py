@@ -64,13 +64,8 @@ def Step1(m[]):
     sleep (time)
     GPIO.output(m[3], False)
 
-def Step1B():
-    GPIO.output(H, True)
-    sleep (time)
-    GPIO.output(H, False)
-
-def Step2():
-    GPIO.output(C, True)
+def Step2(m[]):
+    GPIO.output(m[2], True)
     GPIO.output(D, True)
     sleep (time)
     GPIO.output(D, False)

@@ -19,8 +19,8 @@ E=29    #in1
 F=31    #in2
 G=33    #in3
 H=37    #in4
-
 #################################
+
 mo1 = 'A'
 mo2 = 'B'
 
@@ -148,13 +148,14 @@ def action_turn (lenge , motor, direc):
 def stop():
     print("STOP!")
     GPIO.cleanup()
-
+##############################################
 # Hauptprogramm:
 try:
     action_turn(full, m1, 'vor')
     action_turn(full, m2, 'ruk')
-    
+
 except KeyboardInterrupt:
     stop()
 finally:
     stop()
+###############################################

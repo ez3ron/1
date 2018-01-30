@@ -10,6 +10,9 @@ checkout
 git checkout -b yourNewBranchName
 #(to just switch to a new branch the same but without the -b)
 
+#Suppose you're on master branch, to get app.js from new-feature branch do:
+git checkout new-feature path/to/app.js
+# note that there is no leading slash in the path!
 
 ###############################
 

@@ -6,6 +6,9 @@ mkdir
 touch
 checkout
 
+$ git remote update
+$ git branch -r
+
 #to make a new branch and to switch to it:
 git checkout -b yourNewBranchName
 #(to just switch to a new branch the same but without the -b)

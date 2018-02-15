@@ -1,76 +1,56 @@
-import time
 import RPi.GPIO as GPIO
-
-GPIO.setmode(GPIO.BOARD)
+import time
+ 
+GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-
-A = 7
-B = 11
-C = 13
-D = 15
-
-GPIO.setup(A, GPIO.OUT)
-GPIO.setup(B, GPIO.OUT)
-GPIO.setup(C, GPIO.OUT)
-GPIO.setup(D, GPIO.OUT)
-
-
-"""
-      1  2  3  4  5  6  7  8
-      
-Pin1  x  x                 x
-Pin2     x  x  x
-Pin3           x  x  x
-Pin4                 x  x  x
-
-"""
-
-def GPIO_SETUP(a,b,c,d):
-    GPIO.output(A, a)
-    GPIO.output(B, b)
-    GPIO.output(C, c)
-    GPIO.output(D, d)
-    time.sleep(0.001)
-
-def RIGHT_TURN(deg):
-
-    full_circle = 510.0
-    degree = full_circle/360*deg
-    GPIO_SETUP(0,0,0,0)
-
-    while degree > 0.0:
-        GPIO_SETUP(1,0,0,0)
-        GPIO_SETUP(1,1,0,0)
-        GPIO_SETUP(0,1,0,0)
-        GPIO_SETUP(0,1,1,0)
-        GPIO_SETUP(0,0,1,0)
-        GPIO_SETUP(0,0,1,1)
-        GPIO_SETUP(0,0,0,1)
-        GPIO_SETUP(1,0,0,1)
-        degree -= 1
-
-def LEFT_TURN(deg):
-
-    full_circle = 510.0
-    degree = full_circle/360*deg
-    GPIO_SETUP(0,0,0,0)
-
-    while degree > 0.0:
-        GPIO_SETUP(1,0,0,1)
-        GPIO_SETUP(0,0,0,1)
-        GPIO_SETUP(0,0,1,1)
-        GPIO_SETUP(0,0,1,0)
-        GPIO_SETUP(0,1,1,0)
-        GPIO_SETUP(0,1,0,0)
-        GPIO_SETUP(1,1,0,0)
-        GPIO_SETUP(1,0,0,0)
-        degree -= 1
-
-#MAIN #########################
-
-
-RIGHT_TURN(90)
-LEFT_TURN(90)
-RIGHT_TURN(360)
-LEFT_TURN(360)
-GPIO_SETUP(0,0,0,0)
+coil_A_1_pin = 4 # pink
+coil_A_2_pin = 17 # orange
+coil_B_1_pin = 23 # blau
+coil_B_2_pin = 24 # gelb
+#enable_pin   = 7 # Nur bei bestimmten Motoren benoetigt (+Zeile 24 und 30)
+ 
+# anpassen, falls andere Sequenz
+StepCount = 8
+Seq = list(range(0, StepCount))
+Seq[0] = [0,1,0,0]
+Seq[1] = [0,1,0,1]
+Seq[2] = [0,0,0,1]
+Seq[3] = [1,0,0,1]
+Seq[4] = [1,0,0,0]
+Seq[5] = [1,0,1,0]
+Seq[6] = [0,0,1,0]
+Seq[7] = [0,1,1,0]
+ 
+#GPIO.setup(enable_pin, GPIO.OUT)
+GPIO.setup(coil_A_1_pin, GPIO.OUT)
+GPIO.setup(coil_A_2_pin, GPIO.OUT)
+GPIO.setup(coil_B_1_pin, GPIO.OUT)
+GPIO.setup(coil_B_2_pin, GPIO.OUT)
+ 
+#GPIO.output(enable_pin, 1)
+ 
+def setStep(w1, w2, w3, w4):
+    GPIO.output(coil_A_1_pin, w1)
+    GPIO.output(coil_A_2_pin, w2)
+    GPIO.output(coil_B_1_pin, w3)
+    GPIO.output(coil_B_2_pin, w4)
+ 
+def forward(delay, steps):
+    for i in range(steps):
+        for j in range(StepCount):
+            setStep(Seq[j][0], Seq[j][1], Seq[j][2], Seq[j][3])
+            time.sleep(delay)
+ 
+def backwards(delay, steps):
+    for i in range(steps):
+        for j in reversed(range(StepCount)):
+            setStep(Seq[j][0], Seq[j][1], Seq[j][2], Seq[j][3])
+            time.sleep(delay)
+            
+if __name__ == '__main__':
+    while True:
+        delay = raw_input("Zeitverzoegerung (ms)?")
+        steps = raw_input("Wie viele Schritte vorwaerts? ")
+        forward(int(delay) / 1000.0, int(steps))
+        steps = raw_input("Wie viele Schritte rueckwaerts? ")
+        backwards(int(delay) / 1000.0, int(steps))

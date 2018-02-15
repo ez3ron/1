@@ -84,7 +84,6 @@ GPIO.setup(coil_B_1_pin, GPIO.OUT)
 GPIO.setup(coil_B_2_pin, GPIO.OUT)
  
 #GPIO.output(enable_pin, 1)
- 
 def setStep(w1, w2, w3, w4):
     GPIO.output(coil_A_1_pin, w1)
     GPIO.output(coil_A_2_pin, w2)

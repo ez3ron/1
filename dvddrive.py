@@ -1,71 +1,112 @@
-#!/bin/python
- 
-#Importiere GPiO Library
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
 import RPi.GPIO as GPIO
-# Importeer de time biblotheek voor tijdfuncties.
-from time import sleep
+import time
  
-# Zet de pinmode op Broadcom SOC.
 GPIO.setmode(GPIO.BCM)
-# Zet waarschuwingen uit.
 GPIO.setwarnings(False)
-# Stel de GPIO pinnen in voor de stappenmotor:
-StepPins = [4,17,27,22]
+coil_A_1_pin = 4 # pink
+coil_A_2_pin = 17 # orange
+coil_B_1_pin = 23 # blau
+coil_B_2_pin = 24 # gelb
+#enable_pin   = 7 # Nur bei bestimmten Motoren benoetigt (+Zeile 24 und 30)
  
-# Set alle pinnen als uitgang.
-for pin in StepPins:
-  print "Setup pins"
-  GPIO.setup(pin,GPIO.OUT)
-  GPIO.output(pin, False)
+# anpassen, falls andere Sequenz
+StepCount = 8
+Seq = list(range(0, StepCount))
+Seq[0] = [0,1,0,0]
+Seq[1] = [0,1,0,1]
+Seq[2] = [0,0,0,1]
+Seq[3] = [1,0,0,1]
+Seq[4] = [1,0,0,0]
+Seq[5] = [1,0,1,0]
+Seq[6] = [0,0,1,0]
+Seq[7] = [0,1,1,0]
  
-# Definieer variabelen.
-StepCounter = 0
+#GPIO.setup(enable_pin, GPIO.OUT)
+GPIO.setup(coil_A_1_pin, GPIO.OUT)
+GPIO.setup(coil_A_2_pin, GPIO.OUT)
+GPIO.setup(coil_B_1_pin, GPIO.OUT)
+GPIO.setup(coil_B_2_pin, GPIO.OUT)
  
-# Definieer simpele volgorde
-StepCount1 = 4
-Seq1 = []
-Seq1 = range(0, StepCount1)
-Seq1[0] = [1,0,0,0]
-Seq1[1] = [0,1,0,0]
-Seq1[2] = [0,0,1,0]
-Seq1[3] = [0,0,0,1]
+#GPIO.output(enable_pin, 1)
  
-# Definieer geadvanceerde volgorde (volgens de datasheet)
-StepCount2 = 8
-Seq2 = []
-Seq2 = range(0, StepCount2)
-Seq2[0] = [1,0,0,0]
-Seq2[1] = [1,1,0,0]
-Seq2[2] = [0,1,0,0]
-Seq2[3] = [0,1,1,0]
-Seq2[4] = [0,0,1,0]
-Seq2[5] = [0,0,1,1]
-Seq2[6] = [0,0,0,1]
-Seq2[7] = [1,0,0,1]
+def setStep(w1, w2, w3, w4):
+    GPIO.output(coil_A_1_pin, w1)
+    GPIO.output(coil_A_2_pin, w2)
+    GPIO.output(coil_B_1_pin, w3)
+    GPIO.output(coil_B_2_pin, w4)
  
-# Welke stappenvolgorde gaan we hanteren?
-Seq = Seq2
-StepCount = StepCount2
+def forward(delay, steps):
+    for i in range(steps):
+        for j in range(StepCount):
+            setStep(Seq[j][0], Seq[j][1], Seq[j][2], Seq[j][3])
+            time.sleep(delay)
  
-try:
-  while True:
-    for pin in range(0, 4):
-      xpin = StepPins[pin]
-      if Seq[StepCounter][pin]!=0:
-        print "Stap: %i GPIO Actief: %i" %(StepCounter,xpin)
-        GPIO.output(xpin, True)
-      else:
-        GPIO.output(xpin, False)
- 
-    StepCounter += 1
- 
-    # Als we aan het einde van de stappenvolgorde zijn beland start dan opnieuw
-    if (StepCounter==StepCount): StepCounter = 0
-    if (StepCounter<0): StepCounter = StepCount
- 
-    # Wacht voor de volgende stap (lager = snellere draaisnelheid)
-    sleep(.001)
- 
-except KeyboardInterrupt:  
-  # GPIO netjes afsluiten
-  GPIO.cleanup()
+def backwards(delay, steps):
+    for i in range(steps):
+        for j in reversed(range(StepCount)):
+            setStep(Seq[j][0], Seq[j][1], Seq[j][2], Seq[j][3])
+            time.sleep(delay)
+            
+if __name__ == '__main__':
+    while True:
+        delay = raw_input("Zeitverzoegerung (ms)?")
+        steps = raw_input("Wie viele Schritte vorwaerts? ")
+        forward(int(delay) / 1000.0, int(steps))
+        steps = raw_input("Wie viele Schritte rueckwaerts? ")
+        backwards(int(delay) / 1000.0, int(steps))

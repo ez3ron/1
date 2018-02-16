@@ -10,12 +10,11 @@ coil_B_2_pin = 24 # gelb
 #enable_pin   = 7 # Nur bei bestimmten Motoren benoetigt (+Zeile 24 und 30)
  
 # anpassen, falls andere Sequenz
-StepCount = 4
+StepCount = 2
 Seq = list(range(0, StepCount))
 Seq[0] = [1,1,0,0]
-Seq[1] = [0,1,1,0]
-Seq[2] = [0,0,1,1]
-Seq[3] = [1,0,0,1]
+Seq[1] = [0,0,1,1]
+
 
 #GPIO.setup(enable_pin, GPIO.OUT)
 GPIO.setup(coil_A_1_pin, GPIO.OUT)

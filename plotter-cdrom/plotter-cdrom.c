@@ -640,7 +640,7 @@ int main(int argc, char **argv){
   digitalWrite(X_STEPPER01, 1);
   digitalWrite(X_STEPPER02, 0);    
   digitalWrite(X_STEPPER03, 0);    
-  digitalWrite(X_STEPPER04, 0);    
+  digitalWrite(X_STEPPER04, 1);    
 
   digitalWrite(X_ENABLE01, 1);
   digitalWrite(X_ENABLE02, 1);    
@@ -652,7 +652,7 @@ int main(int argc, char **argv){
   digitalWrite(Y_STEPPER01, 1);
   digitalWrite(Y_STEPPER02, 0);    
   digitalWrite(Y_STEPPER03, 0);    
-  digitalWrite(Y_STEPPER04, 0);    
+  digitalWrite(Y_STEPPER04, 1);    
 
 
   if(ioctl(STDOUT_FILENO, TIOCGWINSZ, &terminal)<0){

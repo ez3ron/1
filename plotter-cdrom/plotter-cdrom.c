@@ -33,8 +33,8 @@
 #define X_STEPPER03 19
 #define X_STEPPER04 21
 
-//#define X_ENABLE01 7
-//#define X_ENABLE02 11
+#define X_ENABLE01 7
+#define X_ENABLE02 11
 
 #define Y_STEPPER01 7
 #define Y_STEPPER02 11

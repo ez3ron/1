@@ -350,25 +350,25 @@ void MakeStepX(int direction, long stepPause){
     digitalWrite(X_STEPPER01, 1);
     digitalWrite(X_STEPPER02, 0);
     digitalWrite(X_STEPPER03, 0);
-    digitalWrite(X_STEPPER04, 0);    
+    digitalWrite(X_STEPPER04, 1);    
   }
   if(StepX == 1){
     digitalWrite(X_STEPPER01, 0);
-    digitalWrite(X_STEPPER02, 0);
-    digitalWrite(X_STEPPER03, 1);
-    digitalWrite(X_STEPPER04, 0);    
+    digitalWrite(X_STEPPER02, 1);
+    digitalWrite(X_STEPPER03, 0);
+    digitalWrite(X_STEPPER04, 1);    
   }
   if(StepX == 2){
     digitalWrite(X_STEPPER01, 0);
     digitalWrite(X_STEPPER02, 1);
-    digitalWrite(X_STEPPER03, 0);
+    digitalWrite(X_STEPPER03, 1);
     digitalWrite(X_STEPPER04, 0);    
   }
   if(StepX == 3){
-    digitalWrite(X_STEPPER01, 0);
+    digitalWrite(X_STEPPER01, 1);
     digitalWrite(X_STEPPER02, 0);
-    digitalWrite(X_STEPPER03, 0);
-    digitalWrite(X_STEPPER04, 1);    
+    digitalWrite(X_STEPPER03, 1);
+    digitalWrite(X_STEPPER04, 0);    
   }
   
   usleep(stepPause);
@@ -403,25 +403,25 @@ void MakeStepY(int direction, long stepPause){
     digitalWrite(Y_STEPPER01, 1);
     digitalWrite(Y_STEPPER02, 0);
     digitalWrite(Y_STEPPER03, 0);
-    digitalWrite(Y_STEPPER04, 0);    
+    digitalWrite(Y_STEPPER04, 1);    
   }
   if(StepY == 1){
     digitalWrite(Y_STEPPER01, 0);
-    digitalWrite(Y_STEPPER02, 0);
-    digitalWrite(Y_STEPPER03, 1);
-    digitalWrite(Y_STEPPER04, 0);    
+    digitalWrite(Y_STEPPER02, 1);
+    digitalWrite(Y_STEPPER03, 0);
+    digitalWrite(Y_STEPPER04, 1);    
   }
   if(StepY == 2){
     digitalWrite(Y_STEPPER01, 0);
     digitalWrite(Y_STEPPER02, 1);
-    digitalWrite(Y_STEPPER03, 0);
+    digitalWrite(Y_STEPPER03, 1);
     digitalWrite(Y_STEPPER04, 0);    
   }
   if(StepY == 3){
-    digitalWrite(Y_STEPPER01, 0);
+    digitalWrite(Y_STEPPER01, 1);
     digitalWrite(Y_STEPPER02, 0);
-    digitalWrite(Y_STEPPER03, 0);
-    digitalWrite(Y_STEPPER04, 1);    
+    digitalWrite(Y_STEPPER03, 1);
+    digitalWrite(Y_STEPPER04, 0);    
   }
 //  printf("StepY\n");
   usleep(stepPause);
